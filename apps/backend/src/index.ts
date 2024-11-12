@@ -36,4 +36,6 @@ server.use('/trpc',trpcExpress.createExpressMiddleware({
     createContext
 }))
 
-server.listen(3000)
+server.listen(3000,()=>{
+    console.log(process.env.FRONTEND_URL)
+})
