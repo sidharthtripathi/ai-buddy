@@ -1,5 +1,3 @@
-
-import { client } from "./trpc/trpc"
 import {ScrollArea} from '@/components/ui/scroll-area'
 import {Card,CardContent} from '@/components/ui/card'
 import {Input} from '@/components/ui/input'
@@ -9,6 +7,7 @@ import  { useRef, useState } from "react"
 import { useForm } from "react-hook-form"
 import {v4 as uuid} from 'uuid'
 import { timeAgo } from "./lib/utils"
+import { server } from './lib/axios'
 enum Sender {
   SELF,
   BOT
@@ -26,10 +25,9 @@ function App() {
   const scrollRef = useRef<null | HTMLDivElement>(null)
   async function onSubmit(payload : FormType){
     setMessages(p=>([...p,{content : payload.prompt,id : uuid(),sender : Sender.SELF,time : timeAgo.format(new Date()) }]))
-    const res = await client.prompt.textPrompt.query(payload)
-    setMessages(p=>([...p,{id:uuid(),content : res,sender : Sender.BOT,time : timeAgo.format(new Date())}]))
+    const {data : {response}} = await server.post("/api/query",{query : payload.prompt })
+    setMessages(p=>([...p,{id:uuid(),content : response,sender : Sender.BOT,time : timeAgo.format(new Date())}]))
     reset()
-   
 }
 return (
   <div className="flex flex-col h-screen ">
