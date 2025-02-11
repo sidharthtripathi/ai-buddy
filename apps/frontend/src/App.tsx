@@ -1,6 +1,6 @@
 import {ScrollArea} from '@/components/ui/scroll-area'
 import {Card,CardContent} from '@/components/ui/card'
-import {Input} from '@/components/ui/input'
+
 import {Button} from '@/components/ui/button'
 import { SendIcon } from "lucide-react"
 import  { useRef, useState } from "react"
@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form"
 import {v4 as uuid} from 'uuid'
 import { timeAgo } from "./lib/utils"
 import { server } from './lib/axios'
+import { Textarea } from './components/ui/textarea'
 enum Sender {
   SELF,
   BOT
@@ -45,7 +46,7 @@ return (
       </ScrollArea>
       <footer className="p-4 border-t border-gray-200 dark:border-gray-700">
         <form onSubmit={handleSubmit(onSubmit)} className="flex gap-2">
-          <Input placeholder="Ask Prompot" className="flex-1"
+          < Textarea placeholder="Ask Prompot" className="flex-1"
           disabled = {isSubmitting}
           autoFocus
           autoComplete="off"
