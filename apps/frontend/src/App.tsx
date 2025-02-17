@@ -9,24 +9,16 @@ import {v4 as uuid} from 'uuid'
 import { timeAgo } from "./lib/utils"
 import { server } from './lib/axios'
 import { Textarea } from './components/ui/textarea'
-enum Sender {
-  SELF,
-  BOT
-}
-type MessageType = {
-  id: string,
-  sender: Sender,
-  content : string,
-  time : string
-}
-type FormType = {prompt : string}
+import { MessageType,Sender,FormType } from './types/formSchema'
+
+
 function App() {
   const [messages,setMessages] = useState<MessageType[]>([])
   const {register,handleSubmit,reset,formState : {isSubmitting}} = useForm<FormType>()
   const scrollRef = useRef<null | HTMLDivElement>(null)
-  async function onSubmit(payload : FormType){
-    setMessages(p=>([...p,{content : payload.prompt,id : uuid(),sender : Sender.SELF,time : timeAgo.format(new Date()) }]))
-    const {data : {response}} = await server.post("/api/query",{query : payload.prompt })
+  async function onSubmit({prompt} : FormType){
+    setMessages(p=>([...p,{content :prompt,id : uuid(),sender : Sender.SELF,time : timeAgo.format(new Date()) }]))
+    const {data : {response}} = await server.post("/api/query",{query : prompt })
     setMessages(p=>([...p,{id:uuid(),content : response,sender : Sender.BOT,time : timeAgo.format(new Date())}]))
     reset()
 }
@@ -35,7 +27,7 @@ return (
       <ScrollArea className="flex-1 p-4 h-[calc(100vh-4rem)]" ref={scrollRef}>
         {messages.map((message) => (
           <div key={message.id} className={`flex ${message.sender === Sender.SELF ? 'justify-end' : 'justify-start'} mb-4`}>
-            <Card className={`max-w-[70%] ${message.sender === Sender.SELF ? 'bg-primary text-primary-foreground' : ''}`}>
+            <Card className={`max-w-[70%] ${message.sender === Sender.SELF && 'bg-primary text-primary-foreground'}`}>
               <CardContent className="p-3">
                 <p className="text-sm">{message.content}</p>
                 <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{message.time}</p>
