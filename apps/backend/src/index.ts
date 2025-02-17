@@ -1,7 +1,6 @@
 import express from 'express'
 import cors from 'cors'
 import dotenv from 'dotenv'
-
 import { aiRouter } from './routes/ai'
 import bodyParser from 'body-parser'
 dotenv.config()
