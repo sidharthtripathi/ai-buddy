@@ -14,6 +14,9 @@ server.use(cors({
 
 server.use(bodyParser.json())
 
+server.use("/api/status",(req,res)=>{
+    res.end("server is up")
+})
 server.use('/api',aiRouter)
 
 server.listen(3000)
