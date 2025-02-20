@@ -2,7 +2,7 @@ import { Textarea } from '@/components/ui/textarea'
 import {Button} from '@/components/ui/button'
 import { useForm } from "react-hook-form"
 import { server } from '@/lib/axios'
-import { SendHorizonalIcon, SendIcon } from "lucide-react"
+import { SendHorizonalIcon } from "lucide-react"
 import { historySchema } from 'schema'
 import { z } from 'zod'
 import { FormType } from '@/types/formSchema'

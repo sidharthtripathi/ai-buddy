@@ -21,7 +21,7 @@ return (
           
         
      
-          <RetroGrid />
+          <RetroGrid opacity={1} angle={20} cellSize={100}/>
         </div> : <div>
             {history.map((message,idx) => (
           <div key={idx} className={`flex ${message.role === "user" ? 'justify-end' : 'justify-start'} mb-4 animate-jump animate-once`}>
