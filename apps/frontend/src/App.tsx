@@ -11,7 +11,7 @@ function App() {
   const [history,setHistory] = useState<History>([])
   const scrollRef = useRef<null | HTMLDivElement>(null)
 return (
-  <div className="flex flex-col h-screen ">
+  <div className="flex flex-col h-[100dvh] ">
       <ScrollArea className="flex-1 p-4 h-[calc(100vh-4rem)]" ref={scrollRef}>
         {
           history.length===0 ? <div className="relative flex h-full w-full flex-col items-center justify-center overflow-hidden rounded-lg border bg-background">
