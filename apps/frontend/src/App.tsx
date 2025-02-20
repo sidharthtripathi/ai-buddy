@@ -1,6 +1,6 @@
 import {ScrollArea} from '@/components/ui/scroll-area'
 import {Card,CardContent} from '@/components/ui/card'
-
+import {Markdown} from "./components/Markdown"
 import {Button} from '@/components/ui/button'
 import { SendIcon } from "lucide-react"
 import  { useRef, useState } from "react"
@@ -29,7 +29,7 @@ return (
           <div key={message.id} className={`flex ${message.sender === Sender.SELF ? 'justify-end' : 'justify-start'} mb-4`}>
             <Card className={`max-w-[70%] ${message.sender === Sender.SELF && 'bg-primary text-primary-foreground'}`}>
               <CardContent className="p-3">
-                <p className="text-sm">{message.content}</p>
+                <Markdown content={message.content} />
                 <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{message.time}</p>
               </CardContent>
             </Card>
