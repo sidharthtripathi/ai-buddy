@@ -18,6 +18,8 @@
     "packages/*"
   ],
   "dependencies": {
+    "react-markdown": "^9.0.3",
+    "remark-gfm": "^4.0.1",
     "turbo": "^2.2.3"
   }
 }
