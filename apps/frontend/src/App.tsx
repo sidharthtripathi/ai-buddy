@@ -25,7 +25,7 @@ return (
         </div> : <div>
             {history.map((message,idx) => (
           <div key={idx} className={`flex ${message.role === "user" ? 'justify-end' : 'justify-start'} mb-4 animate-jump animate-once`}>
-            <Card className={`max-w-[70%] ${message.role === "user" && 'bg-primary text-primary-foreground'}`}>
+            <Card className={`md:max-w-[70%] ${message.role === "user" && 'bg-primary text-primary-foreground'}`}>
               <CardContent className="p-3">
                 <Markdown content={message.parts.at(0)?.text as string} />
               </CardContent>
