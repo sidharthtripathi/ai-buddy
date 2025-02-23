@@ -1,9 +1,7 @@
-import {GoogleGenerativeAI,Content} from '@google/generative-ai'
-import dotenv from 'dotenv'
+import {GoogleGenerativeAI} from '@google/generative-ai'
 import { historySchema } from 'schema'
 import { z } from 'zod'
-dotenv.config()
-const geminiKey = process.env.GEMINI_API_KEY!
+const geminiKey = process.env.GEMINI_API_KEY as string
 const genAI = new GoogleGenerativeAI(geminiKey)
 const model = genAI.getGenerativeModel({model : "gemini-2.0-flash"})
 type ChatHistory = z.infer<typeof historySchema>
@@ -12,6 +10,5 @@ export async function textChat(prompt : string,history  : ChatHistory){
         history
     })
     const result = await chat.sendMessage(prompt)
-    return result.response.text()
-    
+    return result.response.text()    
 }

@@ -1,11 +1,11 @@
+import dotenv from 'dotenv'
+import path from 'path'
+dotenv.config({path : path.resolve(__dirname,"../../../.env")})
 import express from 'express'
 import cors from 'cors'
-import dotenv from 'dotenv'
 import { aiRouter } from './routes/ai'
 import bodyParser from 'body-parser'
-dotenv.config()
 const server = express()
-
 server.use(cors({
     origin : process.env.FRONTEND_URL,
     methods : ["GET","POST"],

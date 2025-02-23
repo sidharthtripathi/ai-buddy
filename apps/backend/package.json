@@ -1,12 +1,9 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "type": "module",
-  "main": "index.js",
   "scripts": {
     "start": "node build",
-    "dev": "npx tsc --watch",
-    "dev:build" : "node --watch build",
+    "dev": "nodemon --watch 'src/**/*.ts' --exec ts-node src/index.ts",
     "build": "npx tsc"
   },
   "keywords": [],

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "dev": "npx tsc --watch",
     "build": "npx tsc"

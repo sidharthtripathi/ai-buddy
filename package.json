@@ -1,17 +1,14 @@
 {
-  "name": "turborepo-empty-starter",
+  "name": "gemini-clone",
   "version": "1.0.0",
   "private": true,
-  "description": "An empty Turborepo starter",
-  "main": "index.js",
+  "description": "Gemini clone built using react and express with Gemini API key",
   "scripts": {
     "build": "turbo build",
     "lint": "turbo lint",
     "dev": "turbo dev"
   },
   "keywords": [],
-  "author": "tknickman",
-  "license": "ISC",
   "packageManager": "npm@10.8.1",
   "workspaces": [
     "apps/*",
@@ -20,6 +17,5 @@
   "dependencies": {
     "turbo": "^2.2.3",
     "zod": "^3.24.2"
-  },
-  "type": "module"
+  }
 }
