@@ -9,6 +9,7 @@ aiRouter.post('/query',async(req,res)=>{
         res.json({response})
     } catch (error) {
         res.statusMessage = "invalid payload"
+        console.log(error)
         res.status(400).end()
     }
 })
