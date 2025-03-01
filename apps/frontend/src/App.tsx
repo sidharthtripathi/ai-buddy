@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import PromptForm from "./components/Form";
 import { historySchema } from "schema";
 import { z } from "zod";
+import EmptyChat from "./components/EmptyChat";
 
 type History = z.infer<typeof historySchema>;
 
@@ -22,7 +23,8 @@ function App() {
 
   return (
     <div className="flex flex-col h-[100dvh] ">
-      <div
+      {
+        history.length>0 ? <div
         ref={scrollRef}
         className="p-4 grow overflow-y-auto
       [&::-webkit-scrollbar]:w-1
@@ -52,7 +54,8 @@ function App() {
             </Card>
           </div>
         ))}
-      </div>
+      </div> : <EmptyChat/>
+      }
       <PromptForm setHistory={setHistory} history={history} />
     </div>
   );
