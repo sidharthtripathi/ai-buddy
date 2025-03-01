@@ -10,9 +10,9 @@ type History = z.infer<typeof historySchema>
 export default function PromptForm({setHistory,history} : {setHistory : React.Dispatch<React.SetStateAction<History>>,history : History}){
 
     async function onSubmit({prompt} : FormType){
-        setHistory(p=>([...p,{role : "user",parts : [{text : prompt}]}]))
+        setHistory(p=>([...p,{role : "user",parts : [{text : prompt,id:crypto.randomUUID()}]}]))
         const {data : {response}} = await server.post("/api/query",{query : prompt,history })
-        setHistory(p=>([...p,{role : "model",parts : [{text : response}]}]))
+        setHistory(p=>([...p,{role : "model",parts : [{text : response,id:crypto.randomUUID()}]}]))
         reset()
     }
       const {register,handleSubmit,reset,formState : {isSubmitting}} = useForm<FormType>()
