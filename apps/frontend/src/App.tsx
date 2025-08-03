@@ -1,10 +1,10 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Markdown } from "./components/Markdown";
 import { useEffect, useRef, useState } from "react";
 import PromptForm from "./components/Form";
 import { historySchema } from "schema";
 import { z } from "zod";
 import EmptyChat from "./components/EmptyChat";
+import { AIResponse } from "./components/ui/kibo-ui/ai/response";
 
 type History = z.infer<typeof historySchema>;
 
@@ -49,7 +49,8 @@ function App() {
               }`}
             >
               <CardContent className="p-3">
-                <Markdown content={message.parts.at(0)?.text as string} />
+                <AIResponse>{message.parts.at(0)?.text as string}</AIResponse>
+                {/* <Markdown content={message.parts.at(0)?.text as string} /> */}
               </CardContent>
             </Card>
           </div>
